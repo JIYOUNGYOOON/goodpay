@@ -1,0 +1,164 @@
+
+<!DOCTYPE html>
+{% load static %}
+<html>
+<head>
+	<!-- Google Tag Manager -->
+	<script>
+		(function(w,d,s,l,i){w[l]=w[l]||[];
+							 w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});
+							 var f=d.getElementsByTagName(s)[0], j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';
+							 j.async=true;
+							 j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;
+							 f.parentNode.insertBefore(j,f);
+		 					})(window,document,'script','dataLayer','GTM-WWTD8WK');
+	</script>
+	<!-- End Google Tag Manager -->
+	
+	<meta charset="UTF-8">
+	<title>로그인 | 나이스페이 관리자</title>
+	
+	<meta http-equiv="content-type" content="text/html;charset=UTF-8" />
+    <meta charset="utf-8" />    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <meta content="" name="description" />
+    <meta content="" name="author" />
+    
+    <!-- 페이스북 픽셀 도메인 인증 -->
+    <meta name="facebook-domain-verification" content="9x90fippborfk0h4sfd203yyorotsz" />
+    
+    <script>
+		var globalSessionTime = '1800';
+	</script>
+	
+    <!-- BEGIN CSS TEMPLATE -->
+	<link rel="shortcut icon" id="favicon" href="/images/merchant/favicon.png"> 
+    <link rel="stylesheet" type="text/css" href="/css/merchant/material-components-web.min.css"/>
+    <link rel="stylesheet" type="text/css" href="/css/datarangepicker/daterangepicker.css"/>
+    <link rel="stylesheet" type="text/css" href="/css/merchant/base.css?ver=20211123"/>
+    <link rel="stylesheet" type="text/css" href="/css/merchant/layout.css?ver=20211208"/>
+    <!--     보안키패드 관련 css/ -->
+    <link rel="stylesheet" type="text/css" href="/css/keypad/keypad.css?ver=20201022" />
+    <!-- END CSS TEMPLATE -->        
+    
+	<!-- ###################### CSS ###################### -->
+	
+	<!-- ###################### SCRIPT ###################### -->
+	<!-- BEGIN AJAX/KOIWARE CORE JS FRAMEWORK-->
+	<script type="text/javascript" src="/js/jquery-1.11.3.min.js"></script>
+	<script type="text/javascript" src="/js/jquery.ajax-retry.js"></script>
+	<script type="text/javascript" src="/js/koiware.core.js?ver=20220503"></script>
+    <script type="text/javascript" src="/js/koiware.plugins.custom.js?ver=20211123"></script>
+    <script type="text/javascript" src="/js/koiware.util.js?ver=20220915"></script>
+	<!-- END AJAX/KOIWARE CORE JS FRAMEWORK-->
+	<!-- BEGIN CORE JS FRAMEWORK-->
+	<script type="text/javascript" src="/bootstrap/assets/plugins/jquery-ui/jquery-ui-1.10.1.custom.min.js"></script>
+	<script type="text/javascript" src="/bootstrap/assets/plugins/jquery-unveil/jquery.unveil.min.js"></script>
+	<!-- END CORE JS FRAMEWORK -->
+	<!-- BEGIN PAGE LEVEL JS -->    
+	<script type="text/javascript" src="/js/material/material-components-web.min.js"></script>
+	<script type="text/javascript" src="/js/daterangepicker.js"></script>
+	<script type="text/javascript" src="/js/moment.min.js"></script>
+	<script type="text/javascript" src="/js/plugins/jquery-block-ui/jqueryblockui.js"></script>
+	<!-- END PAGE LEVEL PLUGINS -->
+	<!-- BEGIN CORE TEMPLATE JS --> 
+	<script type="text/javascript" src="/bootstrap/assets/js/core.js"></script> 
+	<!-- END CORE TEMPLATE JS --> 
+	<!-- BEGIN MESSAGE TEMPLATE JS -->
+	<script type="text/javascript" src="/js/jquery.i18n.properties-min-1.0.9.js"></script>
+	<script type="text/javascript" src="/js/koiware.core.msg.js?ver=20211123"></script>
+	<!-- END MESSAGE TEMPLATE JS -->
+	<!-- LOTTIE.MIN.JS -->
+	<script type="text/javascript" src="/js/lottie.min.js"></script>
+	
+	<!-- 보안키패드 관련 js import -->
+	<script type="text/javascript" src="/js/secureKeyPad.js?ver=20201022"></script>
+	<script type="text/javascript" src="/js/nicepay.js?ver=20201022"></script>
+	<!-- ###################### SCRIPT ###################### -->
+	<style>
+		/*팝업 탬플릿*/
+		.mmDialog .mdc-dialog__surface{width: 484px}
+		.mmDialog .dialogContent{padding: 10px 10px 5px}
+		.mmDialog .dialog__foot{padding: 0 20px 20px}
+		.mmDialog .dialog__foot.center button{width: auto; min-width: auto}
+		.mmDialog .dialog__foot .layer_close{margin-right: 5px}
+		
+		.llDialog .mdc-dialog__surface{width: 600px}
+		.llDialog .dialogContent{padding: 20px 10px}
+		.llDialog .dialog__foot{padding: 0 30px 30px}
+		.llDialog .dialog__foot button{min-width: 120px}
+		.llDialog .dialog__foot .layer_close{margin-right: 5px}
+	</style>
+</head>
+<body>
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-WWTD8WK" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+	
+
+
+
+
+
+
+
+
+
+
+
+
+
+<script>
+$(document).ready(function(){
+	
+	$("#sendAuthBtn" ).on( "click", function(){
+		koi.Ajax.fnRequest({ email : this.dataset.email }, '/merchant/login/popup/notAuthInfo.ajax', "callBackNotAuth", false)
+	});
+});
+
+function callBackNotAuth(data){
+		
+	if(data.resultCd == '0000'){
+		
+		koi.Msg.fnLyAlert("mm", gMessage( "LOGIN_PWCHANGE_ERR_5" ) );
+	}else{
+
+		koi.Msg.fnLyAlert("mm", data.resultMsg );
+	}
+	
+};
+
+</script>
+
+	<div style="position: fixed;top: 45%;left: 50%;border: 1px solid #e1e1ec;padding: 30px 30px 40px;box-sizing: border-box;width: 600px;transform: translate(-50%, -50%);">
+		<div style="margin-bottom: 55px;">
+			<img src="{% static 'users/img/goodpay.PNG' %}" alt="굿페이" style="height: 30px">
+		</div>
+		
+		
+		 
+			<!-- 이미 인증 완료된 이메일  -->
+			<h2 style="font-size: 24px; font-weight: 800; line-height: 1.5;margin-bottom: 30px; color: #2b2b2b;text-align: center;">
+				계약 신청이 완료되었습니다.<!-- 이미 인증이 완료되었습니다. -->
+			</h2>
+            <h2 style="font-size: 18px; font-weight: 600; line-height: 1.5;margin-bottom: 30px; color: #31708F;text-align: center;">계약 진행을 위한 추가적인 정보 및 서류 수집이 있을 예정입니다.<!-- 가입하신 이메일로 로그인 해주세요. --></h2>
+			<a href="../../main/"
+			   style="background: #233976; width:200px; height: 41px; display: block; margin: 45px auto 50px;font-size: 14px; font-weight: 500; color: #fff;border-radius: 10px;line-height: 40px;text-decoration: none;text-align: center;font-weight: bold;">
+				메인화면 돌아가기<!-- 로그인하기 -->
+			</a>
+      	  
+      	  
+      	  
+      	  
+      
+	</div>
+
+	  <!-- BEGIN AJAX LOADER -->
+    <div id="divPageBlock" style="display:none;">
+        <img src="/images/ajax_loader_03.gif">
+    </div>
+    <div id="divPopupPageBlock" style="display:none;">
+        <img src="/images/ajax_loader_03.gif">
+    </div>
+</body>
+</html>
